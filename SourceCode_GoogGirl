@@ -1,0 +1,168 @@
+#by Reza W. D.
+#20-01-2021
+image jalan = "jalan.jpg"
+image char_risa = "char_risa.png"
+image char_risa:
+    "char_risa"
+    xalign 0.75
+    yalign 0.38
+
+define e = Character("Risa")
+
+
+# The game starts here.
+
+label start:
+    $ y = renpy.input("Siapa Nama Karakter Anda?")
+        if y == "":
+            "Isi Kembali Karakter Anda"
+        y "Selamat Datang [y]"
+
+    scene jalan
+    "Cuaca hari ini sangatlah cerah, y/n melangkahkan kakinya menuju GKB 3 Universitas muhammadiyah malang untuk pertama kalinya. Hari ini adalah hari pertama ia kembali ke kampus setelah libur panjang."
+    "Saat sampai di kelas, y/n segera memasuki ruangan itu dan duduk di sebelah x. "
+
+    scene kelas
+    show char_risa with dissolve
+        e "Hai [y], lama gak ketemu yaa, bagaimana liburanmu?"
+        y "Menyenangkan. Aku banyak belajar hal baru, terutama tentang teknologi. Lalu, bagaimana denganmu?"
+        e "Wah seru keknya, aku mengikuti beberapa internship untuk mengisi waktu luangku. "
+        y "Banyak mencari pengalaman saat liburan ya?? "
+        e "Iya nih. Btw, gimana kalau setelah pulang kuliah  kita belajar bareng sama temen-temen?"
+        y "Hm, boleh juga nih. Biar nanti aku ajak temen-temen."
+        e "Okey, eh dosennya udah masuk nih. Kita dengerin dosennya dulu."
+
+    "Saat selesai kuliah hari itu, x menghampiri y/n untuk bertanya dimana mereka akan belajar bersama."
+        e "Jadi belajar bareng?"
+        y "Jadi dong, aku udah bilang ketemen-temen nih."
+        e "enaknya belajar dimana ya??"
+        menu :
+        "Gazebo":
+            y "gimana kalau kita belajar di Gazebo."
+            jump Gazebo
+            pause
+        "Cafe":
+            "gimana kalau kita belajar di cafe."
+            jump Cafe
+            pause
+
+label Gazebo
+    scene kelas
+    show char_risa with dissolve
+    e "boleh nih tapi, di kampus ini ada banyak gazebo.  Yang deket dari GKB 3 itu Gazebo Mesin dan yang jauh tuh, Gazebo perpustakaan. Kamu mau yang dimana?"
+        menu :
+            "Gazebo Dekat":
+                "Gimana kalau yang deket aja jadi gak terlalu jauh dari gedung."
+                e "yuk ke sana."
+                jump GazDek
+                pause
+            "Gazebo Jauh":
+                "Gimana kalau gazebo yang jauh, kan dekat dengan perpustakaan. Siapa tau nanti kita butuh buku untuk materi yang kita pelajarin?"
+                e "Boleh sih. Yaudah yuk kita kesana let's go!!"
+                jump GazJau
+                pause
+
+label Gazdek
+    scene gazebo_mesin
+    show char_risa with dissolve
+    "Akhirnya [y], [e], dan juga teman-temannya yang lain berjalan menuju Gazebo terdekat dari gedung."
+    y "ngapain enaknya yah?"
+    menu :
+        "Istirahat":
+            "Saat sampai gazebo, [y] memilih untuk duduk sambil bersandar pada pagar gazebo. "
+            jump Gagal
+            pause
+        "Nyimak Pembahasan Kelompok":
+            "[y] mendengarkan dengan seksama penjelasan dari teman-temannya yang paham mengenai materi yang sedang mereka bahas."
+            jump Berhasil
+            pause
+        "Belajar"
+            "Saat sampai gazebo [y] mengeluarkan bindernya dan beberapa buku yang ia punya tentang materi yang ia pelajari."
+            jump Berhasil
+            pause
+
+label GazJau
+    scene gazjau
+    show char_risa with dissolve
+    "Akhirnya [y], [e], dan juga teman-temannya yang lain berjalan menuju Gazebo terjauh dari gedung."
+    scene gazebo
+    y "ngapain enaknya yah?"
+    menu :
+        "Istirahat":
+            "Saat sampai gazebo, [y] memilih untuk duduk sambil bersandar pada pagar gazebo. "
+            jump Gagal
+            pause
+        "Nyimak Pembahasan Kelompok":
+            "[y] mendengarkan dengan seksama penjelasan dari teman-temannya yang paham mengenai materi yang sedang mereka bahas."
+            jump Berhasil
+            pause
+        "Belajar"
+            "Saat sampai gazebo [y] mengeluarkan bindernya dan beberapa buku yang ia punya tentang materi yang ia pelajari."
+            jump Berhasil
+            pause
+
+label cafe
+    scene cafe
+    show char_risa with dissolve
+    e "boleh nih tapi, ada banyak cafe di seiktar kampus. Ada sih yang deket, di belakang kampus."
+    y "yaudah gapapa di belakang kampus aja."
+    "Mereka pun berjalan menuju belakang kampus, namun saat sampai sana, tempat duduknya ada yang lesehan dan juga di kursi."
+    e "eh, duduk diman nih kita?"
+    menu :
+        "Duduk di kursi":
+            y "Gimana kalau duduk di kursi jadi gak perlu lepas sepatu."
+            e "yuk ke sana."
+            jump kursi
+            pause
+        "Duduk Lesehan"
+            y "Gimana kalau lesehn, jadi lebih santai belajarnya."
+            e "Boleh sih. Yaudah yuk kita kesana let's go!!"
+            jump Lesehan
+            pause
+
+label kursi
+    scene cafe
+    show char_risa with dissolve
+    "Akhirnya [y], [e], dan juga teman-temannya yang lain berjalan menuju kursi yang sudah mereka pilih."
+    y "ngapain enaknya yah?"
+    menu :
+        "Istirahat":
+            "Saat sampai cafe, [y] memilih untuk duduk sambil bersandar pada kursi. "
+            jump Gagal
+            pause
+        "Nyimak Pembahasan Kelompok":
+            "[y] mendengarkan dengan seksama penjelasan dari teman-temannya yang paham mengenai materi yang sedang mereka bahas."
+            jump Berhasil
+            pause
+        "Belajar"
+            "Saat sampai cafe [y] mengeluarkan bindernya dan beberapa buku yang ia punya tentang materi yang ia pelajari."
+            jump Berhasil
+            pause
+
+label Lesehan
+    scene cafe_lesehan
+    show char_risa with dissolve
+        menu :
+            "Istirahat":
+                "Saat sampai cafe, [y] memilih untuk duduk sambil bersandar pada dinding cafe. "
+                jump Gagal
+                pause
+            "Nyimak Pembahasan Kelompok":
+                "[y] mendengarkan dengan seksama penjelasan dari teman-temannya yang paham mengenai materi yang sedang mereka bahas."
+                jump Berhasil
+                pause
+            "Belajar"
+                "Saat sampai cafe [y] mengeluarkan bindernya dan beberapa buku yang ia punya tentang materi yang ia pelajari."
+                jump Berhasil
+                pause
+
+label Berhasil:
+        "-GAME OVER-
+        Selamat kamu telah berhasil lulus ujian besok :D"
+        pause
+
+label Gagal:
+        "-GAME OVER-
+        Yah kamu gagal dalam ujian besok... ;("
+        pause
+    return
