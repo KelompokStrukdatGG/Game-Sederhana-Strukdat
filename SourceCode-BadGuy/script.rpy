@@ -1,3 +1,7 @@
+#by Reza Alvin
+#22-1-21
+
+
 image lapbasket = "lapbasket.jpg"
 image kamarkos = "kamarkos.jpg"
 image char_boy = "boy.png"
